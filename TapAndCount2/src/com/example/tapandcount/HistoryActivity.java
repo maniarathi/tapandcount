@@ -25,7 +25,7 @@ public class HistoryActivity extends ListActivity {
 
 	    // Show history in list view
 	    List<Count> values = ds.getAllCounts();
-	    ArrayAdapter<Count> adapter = new ArrayAdapter<Count>(this, R.id.history, values);
+	    ArrayAdapter<Count> adapter = new ArrayAdapter<Count>(this, android.R.layout.simple_list_item_1, values);
 	    setListAdapter(adapter);
 	}
 

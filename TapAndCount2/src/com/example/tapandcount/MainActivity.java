@@ -182,4 +182,12 @@ public class MainActivity extends Activity {
 		setCount();
 		}
 	}
+	
+	public void save(View v) {
+		Count count = null;
+	    count = ds.createCount("new count", lastCount);
+	    // Reset count
+	    lastCount = 0;
+	    setCount();
+	}
 }

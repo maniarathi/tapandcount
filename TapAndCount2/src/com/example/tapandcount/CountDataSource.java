@@ -33,7 +33,7 @@ public class CountDataSource {
 		database.delete(CountOpenHelper.TAC_TABLE_NAME, null, null);
 	}
 	
-	public Count createCount(String desc, String v) {
+	public Count createCount(String desc, int v) {
 		ContentValues values = new ContentValues();
 		
 		// Get current date

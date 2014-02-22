@@ -10,6 +10,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CompoundButton;
+import android.widget.RelativeLayout;
 import android.widget.CompoundButton.OnCheckedChangeListener;
 import android.widget.Switch;
 import android.widget.Toast;
@@ -18,6 +19,8 @@ public class SettingsActivity extends Activity {
 	
 	public static final String PREFS_NAME = "TACPrefFile";
 	
+	private CountDataSource ds;
+	
 	private Switch multitouchSwitch;
 	private Switch extraoptionsSwitch;
 	
@@ -25,6 +28,10 @@ public class SettingsActivity extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.fragment_settings);
+		
+		// Setup database
+		ds = new CountDataSource(this);
+		ds.open();
 		
 		// Open settings file
 		final SharedPreferences settings = getSharedPreferences(PREFS_NAME, 0);
@@ -55,6 +62,32 @@ public class SettingsActivity extends Activity {
 		multitouchSwitch.setChecked(settings.getBoolean("settings_multitouch_allowed", false));
 		extraoptionsSwitch.setChecked(settings.getBoolean("settings_extra_options", false));
 		
+	}
+	
+	@Override
+	public void onResume() {
+		// Open db
+		ds.open();
+		// Set settings
+		final SharedPreferences settings = getSharedPreferences(PREFS_NAME, 0);
+		multitouchSwitch.setChecked(settings.getBoolean("settings_multitouch_allowed", false));
+		extraoptionsSwitch.setChecked(settings.getBoolean("settings_extra_options", false));
+		
+		super.onResume();
+	}
+
+	@Override
+	public void onPause() {
+		// Close db
+		ds.close();
+		super.onPause();
+	}
+	
+	@Override
+	public void onStop() {
+		// Close db
+		ds.close();
+		super.onStop();
 	}
 
 	@Override
@@ -142,5 +175,9 @@ public class SettingsActivity extends Activity {
 			editor.commit();
 			
 		}
+	}
+	
+	public void clearHistory(View v) {
+		ds.deleteAllHistory();
 	}
 }
