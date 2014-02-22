@@ -11,6 +11,15 @@ public final class R {
     public static final class attr {
     }
     public static final class color {
+        public static final int background_black=0x7f040007;
+        public static final int background_blue=0x7f040005;
+        public static final int background_brown=0x7f040009;
+        public static final int background_green=0x7f040004;
+        public static final int background_orange=0x7f040002;
+        public static final int background_purple=0x7f040006;
+        public static final int background_red=0x7f040001;
+        public static final int background_white=0x7f040008;
+        public static final int background_yellow=0x7f040003;
         public static final int myBackground=0x7f040000;
     }
     public static final class dimen {
@@ -30,21 +39,31 @@ public final class R {
         public static final int ic_launcher=0x7f020000;
     }
     public static final class id {
-        public static final int action_count=0x7f0a000c;
-        public static final int action_history=0x7f0a000d;
-        public static final int action_settings=0x7f0a000e;
-        public static final int button_decrement=0x7f0a0002;
-        public static final int button_save=0x7f0a0003;
-        public static final int countValueId=0x7f0a0000;
-        public static final int counting_buttons_layout=0x7f0a0001;
-        public static final int extrabuttons=0x7f0a000a;
-        public static final int history=0x7f0a0004;
-        public static final int multitouch=0x7f0a0008;
-        public static final int page_buttons=0x7f0a0005;
-        public static final int page_buttons_2=0x7f0a0006;
-        public static final int page_buttons_3=0x7f0a0007;
-        public static final int switch_extrabuttons=0x7f0a000b;
-        public static final int switch_multitouch=0x7f0a0009;
+        public static final int action_count=0x7f0a0016;
+        public static final int action_history=0x7f0a0017;
+        public static final int action_settings=0x7f0a0018;
+        public static final int background1=0x7f0a0007;
+        public static final int background2=0x7f0a0008;
+        public static final int background3=0x7f0a0009;
+        public static final int background4=0x7f0a000b;
+        public static final int background5=0x7f0a000c;
+        public static final int background6=0x7f0a000d;
+        public static final int background7=0x7f0a000f;
+        public static final int background8=0x7f0a0010;
+        public static final int background9=0x7f0a0011;
+        public static final int button_decrement=0x7f0a0003;
+        public static final int button_save=0x7f0a0004;
+        public static final int countValueId=0x7f0a0001;
+        public static final int counting_buttons_layout=0x7f0a0002;
+        public static final int counting_layout=0x7f0a0000;
+        public static final int extrabuttons=0x7f0a0014;
+        public static final int history=0x7f0a0005;
+        public static final int multitouch=0x7f0a0012;
+        public static final int page_buttons=0x7f0a0006;
+        public static final int page_buttons_2=0x7f0a000a;
+        public static final int page_buttons_3=0x7f0a000e;
+        public static final int switch_extrabuttons=0x7f0a0015;
+        public static final int switch_multitouch=0x7f0a0013;
     }
     public static final class integer {
         public static final int count_number=0x7f070000;

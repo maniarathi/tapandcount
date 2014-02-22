@@ -6,6 +6,8 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
 import android.widget.CompoundButton;
 import android.widget.CompoundButton.OnCheckedChangeListener;
 import android.widget.Switch;
@@ -42,14 +44,14 @@ public class SettingsActivity extends Activity {
 			@Override
 			public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
 				SharedPreferences.Editor editor = settings.edit();
-				editor.putBoolean("setting_extra_options", isChecked);
+				editor.putBoolean("settings_extra_options", isChecked);
 				editor.commit();
 			}
 		});
 		
 		// Set settings
 		multitouchSwitch.setChecked(settings.getBoolean("settings_multitouch_allowed", false));
-		extraoptionsSwitch.setChecked(settings.getBoolean("setting_extra_options", false));
+		extraoptionsSwitch.setChecked(settings.getBoolean("settings_extra_options", false));
 		
 	}
 
@@ -77,5 +79,45 @@ public class SettingsActivity extends Activity {
 			return super.onOptionsItemSelected(item);
 			
 		}
+	}
+	
+	public void setBackgroundColor(View v) {
+		int chosenBackground = R.color.myBackground;
+		
+		switch (v.getId()) {
+		case R.id.background1:
+			chosenBackground = R.color.background_red;
+			break;
+		case R.id.background2:
+			chosenBackground = R.color.background_orange;
+			break;
+		case R.id.background3:
+			chosenBackground = R.color.background_yellow;
+			break;
+		case R.id.background4:
+			chosenBackground = R.color.background_green;
+			break;
+		case R.id.background5:
+			chosenBackground = R.color.background_blue;
+			break;
+		case R.id.background6:
+			chosenBackground = R.color.background_purple;
+			break;
+		case R.id.background7:
+			chosenBackground = R.color.background_black;
+			break;
+		case R.id.background8:
+			chosenBackground = R.color.background_white;
+			break;
+		case R.id.background9:
+			chosenBackground = R.color.background_brown;
+			break;
+		}
+		
+		// Set setting
+		final SharedPreferences settings = getSharedPreferences(PREFS_NAME, 0);
+		SharedPreferences.Editor editor = settings.edit();
+		editor.putInt("settings_background", chosenBackground);
+		editor.commit();
 	}
 }

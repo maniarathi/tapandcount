@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout android:id="@+id/counting_layout" 
+    xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/myBackground"
@@ -27,6 +28,7 @@
 	        android:layout_marginLeft="15dp"
 	        android:layout_marginRight="15dp"
 			android:text="@string/decrement"
+			android:onClick="decrement"
 			android:visibility="gone"/>
         
 	    	<Button 

@@ -42,20 +42,29 @@
 	   android:layout_height="wrap_content"
 	   android:gravity="center_horizontal" >
 	   
-		<Button android:layout_width="wrap_content"
+		<Button android:id="@+id/background1" 
+		    android:layout_width="wrap_content"
 		    style="?android:attr/buttonBarButtonStyle"
 	        android:layout_height="wrap_content"
-	        android:background="#ff1919" />
+	        android:background="@color/background_red"
+	        android:clickable="true"
+	        android:onClick="setBackgroundColor" />
 		
-	    <Button android:layout_width="wrap_content"
+	    <Button android:id="@+id/background2"
+	        android:layout_width="wrap_content"
 	        style="?android:attr/buttonBarButtonStyle"
 	        android:layout_height="wrap_content"
-	        android:background="#FF7300" />
+	        android:background="@color/background_orange"
+	        android:clickable="true"
+	        android:onClick="setBackgroundColor" />
 	    
-	    <Button android:layout_width="wrap_content"
+	    <Button android:id="@+id/background3"
+	        android:layout_width="wrap_content"
 	        style="?android:attr/buttonBarButtonStyle"
 	        android:layout_height="wrap_content"
-	        android:background="#FFFB00" />
+	        android:background="@color/background_yellow"
+	        android:clickable="true"
+	        android:onClick="setBackgroundColor" />
         
     </LinearLayout>
     
@@ -66,20 +75,29 @@
 	   android:layout_height="wrap_content"
 	   android:gravity="center_horizontal" >
 	   
-		<Button android:layout_width="wrap_content"
+		<Button android:id="@+id/background4"
+		    android:layout_width="wrap_content"
 		    style="?android:attr/buttonBarButtonStyle"
 	        android:layout_height="wrap_content"
-	        android:background="#07DE20" />
+	        android:background="@color/background_green"
+	        android:clickable="true"
+	        android:onClick="setBackgroundColor" />
 		
-	    <Button android:layout_width="wrap_content"
+	    <Button android:id="@+id/background5"
+	        android:layout_width="wrap_content"
 	        style="?android:attr/buttonBarButtonStyle"
 	        android:layout_height="wrap_content"
-	        android:background="#0077FF" />
+	        android:background="@color/background_blue"
+	        android:clickable="true"
+	        android:onClick="setBackgroundColor" />
 	    
-	    <Button android:layout_width="wrap_content"
+	    <Button android:id="@+id/background6"
+	        android:layout_width="wrap_content"
 	        style="?android:attr/buttonBarButtonStyle"
 	        android:layout_height="wrap_content"
-	        android:background="#B700FF" />
+	        android:background="@color/background_purple"
+	        android:clickable="true"
+	        android:onClick="setBackgroundColor" />
         
     </LinearLayout>
     
@@ -91,20 +109,29 @@
 	   android:layout_marginBottom="@dimen/button_bottom_margin"
 	   style="?android:attr/buttonBarButtonStyle" >
 	    
-		<Button android:layout_width="wrap_content"
+		<Button android:id="@+id/background7"
+		    android:layout_width="wrap_content"
 		    style="?android:attr/buttonBarButtonStyle"
 	        android:layout_height="wrap_content"
-	        android:background="#4A4A4A" />
+	        android:background="@color/background_black"
+	        android:clickable="true"
+	        android:onClick="setBackgroundColor" />
 		
-	    <Button android:layout_width="wrap_content"
+	    <Button android:id="@+id/background8"
+	        android:layout_width="wrap_content"
 	        style="?android:attr/buttonBarButtonStyle"
 	        android:layout_height="wrap_content"
-	        android:background="#FFFFFF" />
+	        android:background="@color/background_white"
+	        android:clickable="true"
+	        android:onClick="setBackgroundColor" />
 	    
-	    <Button android:layout_width="wrap_content"
+	    <Button android:id="@+id/background9"
+	        android:layout_width="wrap_content"
 	        style="?android:attr/buttonBarButtonStyle"
 	        android:layout_height="wrap_content"
-	        android:background="#52252D" />
+	        android:background="@color/background_brown"
+	        android:clickable="true"
+	        android:onClick="setBackgroundColor" />
         
     </LinearLayout>
     

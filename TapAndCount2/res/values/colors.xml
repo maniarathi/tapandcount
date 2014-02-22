@@ -1,5 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <color name="myBackground">#637075</color>
-    
+    <color name="background_red">#ff1919</color>
+    <color name="background_orange">#FF7300</color>
+    <color name="background_yellow">#FFFB00</color>
+    <color name="background_green">#07DE20</color>
+    <color name="background_blue">#0077FF</color>
+    <color name="background_purple">#B700FF</color>
+    <color name="background_black">#4A4A4A</color>
+    <color name="background_white">#FFFFFF</color>
+    <color name="background_brown">#52252D</color>
 </resources>
