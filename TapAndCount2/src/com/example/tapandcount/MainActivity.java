@@ -13,6 +13,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.View;
+import android.widget.Button;
 import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -38,23 +39,26 @@ public class MainActivity extends Activity {
 		// Restore saved preferences
 		SharedPreferences settings = getSharedPreferences(PREFS_NAME, 0);
 		lastCount = settings.getInt("saved_count", 0);
-		
-		
-		// Fetch settings
-		/*multitouchSwitch = (Switch) findViewById(R.id.switch_multitouch);
-		multiTouchAllowed = multitouchSwitch.isChecked();
-		extraoptionsSwitch = (Switch) findViewById(R.id.switch_extrabuttons);
-		showExtraOptions = extraoptionsSwitch.isChecked();
+		showExtraOptions = settings.getBoolean("setting_extra_options", false);
+		multiTouchAllowed = settings.getBoolean("settings_multitouch_allowed", false);
 		
 		// Show buttons if set
 		if (showExtraOptions) {
-			// TODO: Show extra buttons
+			Button decreaseButton = (Button) findViewById(R.id.button_decrement);
+			decreaseButton.setVisibility(View.VISIBLE);
+			Button saveButton = (Button) findViewById(R.id.button_save);
+			saveButton.setVisibility(View.VISIBLE);
+		} else {
+			Button decreaseButton = (Button) findViewById(R.id.button_decrement);
+			decreaseButton.setVisibility(View.GONE);
+			Button saveButton = (Button) findViewById(R.id.button_save);
+			saveButton.setVisibility(View.GONE);
 		}
 		
 		// Enable multitouch
 		if (multiTouchAllowed) {
 			// TODO: Enable multitouch
-		}*/
+		}
 	}
 	
 	@Override
