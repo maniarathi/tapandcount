@@ -1,6 +1,7 @@
 package com.example.tapandcount;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -11,6 +12,7 @@ import android.widget.Button;
 import android.widget.CompoundButton;
 import android.widget.CompoundButton.OnCheckedChangeListener;
 import android.widget.Switch;
+import android.widget.Toast;
 
 public class SettingsActivity extends Activity {
 	
@@ -84,40 +86,61 @@ public class SettingsActivity extends Activity {
 	public void setBackgroundColor(View v) {
 		int chosenBackground = R.color.myBackground;
 		
+		Context context = getApplicationContext();
+		CharSequence text = "Background color set to ";
+		CharSequence color = "";
 		switch (v.getId()) {
 		case R.id.background1:
 			chosenBackground = R.color.background_red;
+			color = "red";
 			break;
 		case R.id.background2:
 			chosenBackground = R.color.background_orange;
+			color = "orange";
 			break;
 		case R.id.background3:
 			chosenBackground = R.color.background_yellow;
+			color = "yellow";
 			break;
 		case R.id.background4:
 			chosenBackground = R.color.background_green;
+			color = "green";
 			break;
 		case R.id.background5:
 			chosenBackground = R.color.background_blue;
+			color = "blue";
 			break;
 		case R.id.background6:
 			chosenBackground = R.color.background_purple;
+			color = "purple";
 			break;
 		case R.id.background7:
 			chosenBackground = R.color.background_black;
+			color = "black";
 			break;
 		case R.id.background8:
 			chosenBackground = R.color.background_white;
+			color = "white";
 			break;
 		case R.id.background9:
 			chosenBackground = R.color.background_brown;
+			color = "brown";
 			break;
 		}
 		
-		// Set setting
-		final SharedPreferences settings = getSharedPreferences(PREFS_NAME, 0);
-		SharedPreferences.Editor editor = settings.edit();
-		editor.putInt("settings_background", chosenBackground);
-		editor.commit();
+		if (color != "") {
+			String s = new StringBuilder().append(text).append(color).toString();
+			int duration = Toast.LENGTH_SHORT;
+
+			Toast toast = Toast.makeText(context, s, duration);
+			toast.show();
+
+			// Set setting
+			final SharedPreferences settings = getSharedPreferences(PREFS_NAME, 0);
+			SharedPreferences.Editor editor = settings.edit();
+			editor.putInt("settings_background", chosenBackground);
+			editor.commit();
+			
+		}
 	}
 }

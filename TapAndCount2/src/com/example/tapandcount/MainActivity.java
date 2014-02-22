@@ -28,8 +28,6 @@ public class MainActivity extends Activity {
 	private boolean showExtraOptions = false;
 	private boolean multiTouchAllowed = false;
 	private Integer lastCount;
-	private Switch multitouchSwitch;
-	private Switch extraoptionsSwitch;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
