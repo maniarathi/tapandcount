@@ -25,6 +25,8 @@ public class MainActivity extends Activity {
 
 	public static final String PREFS_NAME = "TACPrefFile";
 	
+	private CountDataSource ds;
+	
 	private boolean showExtraOptions = false;
 	private boolean multiTouchAllowed = false;
 	private Integer lastCount;
@@ -33,6 +35,10 @@ public class MainActivity extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.fragment_counting);
+		
+		// Setup database
+		ds = new CountDataSource(this);
+		ds.open();
 		
 		// Initialize
 		lastCount = 0;
@@ -69,6 +75,8 @@ public class MainActivity extends Activity {
 	
 	@Override
 	public void onResume() {
+		// Open db
+		ds.open();
 		// Restore saved preferences
 		SharedPreferences settings = getSharedPreferences(PREFS_NAME, 0);
 		lastCount = settings.getInt("saved_count", 0);
@@ -82,13 +90,17 @@ public class MainActivity extends Activity {
 
 	@Override
 	public void onPause() {
-		super.onPause();
+		// Close db
+		ds.close();
+		// Save preferences
 		SharedPreferences settings = getSharedPreferences(PREFS_NAME, 0);
 		SharedPreferences.Editor editor = settings.edit();
 		editor.putInt("saved_count", lastCount);
 	
 		// Commit the edits!
 		editor.commit();
+		
+		super.onPause();
 	}
 	
 	@Override
