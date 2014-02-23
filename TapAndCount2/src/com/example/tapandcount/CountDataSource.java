@@ -41,8 +41,17 @@ public class CountDataSource {
 		Date date = new Date();
 		String dateValue = dateFormat.format(date);
 		
+		// Generate a description using id
+		Cursor latestIdCursor = database.query(CountOpenHelper.TAC_TABLE_NAME, allColumns, CountOpenHelper.COLUMN_ID + " = (SELECT MAX(" + CountOpenHelper.COLUMN_ID + ") FROM " + CountOpenHelper.TAC_TABLE_NAME + ");", null, null, null, null);
+		long lastId = -1;
+		if (latestIdCursor.moveToFirst()) {
+			lastId = cursorToCount(latestIdCursor).getId();
+		}
+		lastId++;
+		String description = "count_" + lastId;
+		
 		// Set column values (except autoincrement id)
-		values.put(CountOpenHelper.COLUMN_DESCRIPTION, desc);
+		values.put(CountOpenHelper.COLUMN_DESCRIPTION, description);
 		values.put(CountOpenHelper.COLUMN_DATE, dateValue);
 		values.put(CountOpenHelper.COLUMN_VALUE, v);
 		

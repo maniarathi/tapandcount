@@ -21,5 +21,8 @@
     <string name="text_otheroptions">Other Options</string>
     <string name="decrement">Decrement</string>
     <string name="save_count">Save Count</string>
+    <string name="action_rename">Rename</string>
+    <string name="action_delete">Delete</string>
+    <string name="action_load_count">Load Count</string>
 
 </resources>

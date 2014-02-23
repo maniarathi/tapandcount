@@ -40,6 +40,6 @@ public class Count {
 
 	@Override
 	public String toString() {
-		return date + "\t=>\t" + value;
+		return desc + " ==> " + value;
 	}
 }

@@ -39,9 +39,12 @@ public final class R {
         public static final int ic_launcher=0x7f020000;
     }
     public static final class id {
-        public static final int action_count=0x7f0a0015;
-        public static final int action_history=0x7f0a0016;
-        public static final int action_settings=0x7f0a0017;
+        public static final int action_count=0x7f0a0018;
+        public static final int action_delete=0x7f0a0016;
+        public static final int action_history=0x7f0a0019;
+        public static final int action_load_count=0x7f0a0017;
+        public static final int action_rename=0x7f0a0015;
+        public static final int action_settings=0x7f0a001a;
         public static final int background1=0x7f0a0006;
         public static final int background2=0x7f0a0007;
         public static final int background3=0x7f0a0008;
@@ -74,11 +77,15 @@ public final class R {
         public static final int fragment_settings=0x7f030003;
     }
     public static final class menu {
-        public static final int main=0x7f090000;
+        public static final int floating_menu=0x7f090000;
+        public static final int main=0x7f090001;
     }
     public static final class string {
         public static final int action_count=0x7f06000c;
+        public static final int action_delete=0x7f060014;
         public static final int action_history=0x7f06000b;
+        public static final int action_load_count=0x7f060015;
+        public static final int action_rename=0x7f060013;
         public static final int action_settings=0x7f060001;
         public static final int app_history=0x7f06000d;
         public static final int app_name=0x7f060000;

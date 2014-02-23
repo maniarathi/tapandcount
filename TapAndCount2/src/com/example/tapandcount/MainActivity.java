@@ -96,8 +96,6 @@ public class MainActivity extends Activity {
 		SharedPreferences settings = getSharedPreferences(PREFS_NAME, 0);
 		SharedPreferences.Editor editor = settings.edit();
 		editor.putInt("saved_count", lastCount);
-	
-		// Commit the edits!
 		editor.commit();
 		
 		super.onPause();
@@ -109,8 +107,6 @@ public class MainActivity extends Activity {
 		SharedPreferences settings = getSharedPreferences(PREFS_NAME, 0);
 		SharedPreferences.Editor editor = settings.edit();
 		editor.putInt("saved_count", lastCount);
-	
-		// Commit the edits!
 		editor.commit();
 	}
 	
@@ -184,10 +180,15 @@ public class MainActivity extends Activity {
 	}
 	
 	public void save(View v) {
-		Count count = null;
-	    count = ds.createCount("new count", lastCount);
+	    ds.createCount("new count", lastCount);
 	    // Reset count
 	    lastCount = 0;
 	    setCount();
+	    // Show toast notification
+	    String s = "Count has been saved to history!";
+		int duration = Toast.LENGTH_SHORT;
+		Toast toast = Toast.makeText(this, s, duration);
+		toast.show();
+
 	}
 }
