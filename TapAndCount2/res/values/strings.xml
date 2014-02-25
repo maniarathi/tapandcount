@@ -24,5 +24,11 @@
     <string name="action_rename">Rename</string>
     <string name="action_delete">Delete</string>
     <string name="action_load_count">Load Count</string>
+    <string name="about_app">About App</string>
+    <string-array name="history_options">
+        <item>Edit Title</item>
+        <item>Delete Count</item>
+        <item>Load Count</item>
+    </string-array>
 
 </resources>

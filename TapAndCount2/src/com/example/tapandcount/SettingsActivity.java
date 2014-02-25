@@ -1,7 +1,9 @@
 package com.example.tapandcount;
 
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -109,6 +111,19 @@ public class SettingsActivity extends Activity {
 			startActivity(historyIntent);
 			return true;
 		case R.id.action_settings:
+			return true;
+		case R.id.action_about:
+			AlertDialog.Builder builder = new AlertDialog.Builder(this);
+			builder	.setTitle("About App")
+					.setMessage("Version: 1.0\nDeveloped by: Arathi Mani\nContact: mani.arathi@gmail.com")
+					.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+						@Override
+						public void onClick(DialogInterface dialog, int which) {
+							dialog.cancel();
+						}
+					});
+			AlertDialog dialog = builder.create();
+			dialog.show();
 			return true;
 		default:
 			return super.onOptionsItemSelected(item);

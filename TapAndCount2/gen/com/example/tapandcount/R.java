@@ -8,6 +8,9 @@
 package com.example.tapandcount;
 
 public final class R {
+    public static final class array {
+        public static final int history_options=0x7f080000;
+    }
     public static final class attr {
     }
     public static final class color {
@@ -39,33 +42,34 @@ public final class R {
         public static final int ic_launcher=0x7f020000;
     }
     public static final class id {
-        public static final int action_count=0x7f0a0018;
-        public static final int action_delete=0x7f0a0016;
-        public static final int action_history=0x7f0a0019;
-        public static final int action_load_count=0x7f0a0017;
-        public static final int action_rename=0x7f0a0015;
-        public static final int action_settings=0x7f0a001a;
-        public static final int background1=0x7f0a0006;
-        public static final int background2=0x7f0a0007;
-        public static final int background3=0x7f0a0008;
-        public static final int background4=0x7f0a000a;
-        public static final int background5=0x7f0a000b;
-        public static final int background6=0x7f0a000c;
-        public static final int background7=0x7f0a000e;
-        public static final int background8=0x7f0a000f;
-        public static final int background9=0x7f0a0010;
-        public static final int button_decrement=0x7f0a0003;
-        public static final int button_save=0x7f0a0004;
-        public static final int countValueId=0x7f0a0001;
-        public static final int counting_buttons_layout=0x7f0a0002;
-        public static final int counting_layout=0x7f0a0000;
-        public static final int extrabuttons=0x7f0a0013;
-        public static final int multitouch=0x7f0a0011;
-        public static final int page_buttons=0x7f0a0005;
-        public static final int page_buttons_2=0x7f0a0009;
-        public static final int page_buttons_3=0x7f0a000d;
-        public static final int switch_extrabuttons=0x7f0a0014;
-        public static final int switch_multitouch=0x7f0a0012;
+        public static final int action_about=0x7f0b0018;
+        public static final int action_count=0x7f0b0019;
+        public static final int action_delete=0x7f0b0016;
+        public static final int action_history=0x7f0b001a;
+        public static final int action_load_count=0x7f0b0017;
+        public static final int action_rename=0x7f0b0015;
+        public static final int action_settings=0x7f0b001b;
+        public static final int background1=0x7f0b0006;
+        public static final int background2=0x7f0b0007;
+        public static final int background3=0x7f0b0008;
+        public static final int background4=0x7f0b000a;
+        public static final int background5=0x7f0b000b;
+        public static final int background6=0x7f0b000c;
+        public static final int background7=0x7f0b000e;
+        public static final int background8=0x7f0b000f;
+        public static final int background9=0x7f0b0010;
+        public static final int button_decrement=0x7f0b0003;
+        public static final int button_save=0x7f0b0004;
+        public static final int countValueId=0x7f0b0001;
+        public static final int counting_buttons_layout=0x7f0b0002;
+        public static final int counting_layout=0x7f0b0000;
+        public static final int extrabuttons=0x7f0b0013;
+        public static final int multitouch=0x7f0b0011;
+        public static final int page_buttons=0x7f0b0005;
+        public static final int page_buttons_2=0x7f0b0009;
+        public static final int page_buttons_3=0x7f0b000d;
+        public static final int switch_extrabuttons=0x7f0b0014;
+        public static final int switch_multitouch=0x7f0b0012;
     }
     public static final class integer {
         public static final int count_number=0x7f070000;
@@ -77,10 +81,11 @@ public final class R {
         public static final int fragment_settings=0x7f030003;
     }
     public static final class menu {
-        public static final int floating_menu=0x7f090000;
-        public static final int main=0x7f090001;
+        public static final int floating_menu=0x7f0a0000;
+        public static final int main=0x7f0a0001;
     }
     public static final class string {
+        public static final int about_app=0x7f060016;
         public static final int action_count=0x7f06000c;
         public static final int action_delete=0x7f060014;
         public static final int action_history=0x7f06000b;
@@ -126,10 +131,10 @@ public final class R {
     
  API 14 theme customizations can go here. 
          */
-        public static final int AppBaseTheme=0x7f080000;
+        public static final int AppBaseTheme=0x7f090000;
         /**  Application theme. 
  All customizations that are NOT specific to a particular API-level can go here. 
          */
-        public static final int AppTheme=0x7f080001;
+        public static final int AppTheme=0x7f090001;
     }
 }
