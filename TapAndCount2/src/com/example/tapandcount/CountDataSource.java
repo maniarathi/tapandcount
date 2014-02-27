@@ -33,6 +33,25 @@ public class CountDataSource {
 		database.delete(CountOpenHelper.TAC_TABLE_NAME, null, null);
 	}
 	
+	public void editCountDescription(Count c, String newTitle) {
+		// Update database
+		ContentValues updateVals = new ContentValues();
+		
+		// Update date
+		DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
+		Date date = new Date();
+		String dateValue = dateFormat.format(date);
+		
+		// Set new values
+		updateVals.put(CountOpenHelper.COLUMN_DESCRIPTION, newTitle);
+		updateVals.put(CountOpenHelper.COLUMN_DATE, dateValue);
+		updateVals.put(CountOpenHelper.COLUMN_VALUE, c.getValue());
+		
+		// Update
+		int rowsChanged = database.update(CountOpenHelper.TAC_TABLE_NAME, updateVals, CountOpenHelper.COLUMN_ID + " = " + c.getId(), null);
+		System.out.println("Updated table with " + rowsChanged + " rows changed.\n");
+	}
+	
 	public void deleteCount(Count c) {
 		long id = c.getId();
 		database.delete(CountOpenHelper.TAC_TABLE_NAME, CountOpenHelper.COLUMN_ID + " = " + id, null);

@@ -46,7 +46,7 @@ public class HistoryActivity extends ListActivity {
 	    final ArrayAdapter<Count> adapter = new ArrayAdapter<Count>(this, android.R.layout.simple_list_item_1, values);
 	    setListAdapter(adapter);
 	    
-	    ListView listView = getListView();
+	    final ListView listView = getListView();
 	    listView.setTextFilterEnabled(true);
 	    listView.setOnItemClickListener(new OnItemClickListener() {
 
@@ -62,11 +62,17 @@ public class HistoryActivity extends ListActivity {
 								case 0:
 									// Edit title
 									editTitle(values.get(position));
+									// Get new values
+									values = ds.getAllCounts();
+									listView.setAdapter(adapter);
+									adapter.notifyDataSetChanged();
+									listView.invalidateViews();
 									break;
 								case 1:
 									// Delete count
 									deleteCount(values.get(position));
 									adapter.remove(adapter.getItem(position));
+									listView.invalidateViews();
 									break;
 								case 2:
 									// Load count
@@ -80,6 +86,7 @@ public class HistoryActivity extends ListActivity {
 						});
 				builder.create().show();
 			}
+			
 	    });
 	}
 
@@ -110,6 +117,8 @@ public class HistoryActivity extends ListActivity {
 			startActivity(countIntent);
 			return true;
 		case R.id.action_history:
+			Intent historyIntent = new Intent(this, HistoryActivity.class);
+			startActivity(historyIntent);
 			return true;
 		case R.id.action_settings:
 			Intent settingsIntent = new Intent(this, SettingsActivity.class);
@@ -134,7 +143,7 @@ public class HistoryActivity extends ListActivity {
 		}
 	}
 	
-	public void editTitle(Count c) {
+	public void editTitle(final Count c) {
 		AlertDialog.Builder builder = new AlertDialog.Builder(this);
 		builder.setTitle("Edit Title");
 		final EditText input = new EditText(this);
@@ -144,6 +153,8 @@ public class HistoryActivity extends ListActivity {
 		    @Override
 		    public void onClick(DialogInterface dialog, int which) {
 		        edittedTitle = input.getText().toString();
+		        c.setDesc(edittedTitle);
+		        ds.createCount(c);
 		    }
 		});
 		builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
@@ -154,13 +165,6 @@ public class HistoryActivity extends ListActivity {
 		});
 
 		builder.show();
-		
-		// Update database
-		c.setDesc(edittedTitle);
-		Toast.makeText(this, edittedTitle, Toast.LENGTH_SHORT).show();
-		ds.createCount(c);
-		// Update history
-		values = ds.getAllCounts();
 	}
 	
 	public void deleteCount(Count c) {

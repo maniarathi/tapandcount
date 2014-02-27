@@ -24,7 +24,8 @@ public class MainActivity extends Activity {
 	
 	private boolean showExtraOptions = false;
 	private boolean multiTouchAllowed = false;
-	Count currentCount;
+	private Count currentCount;
+	private int currentValue = 0;
 	// For multitouch use in later version
 	private Integer numTouches = 1;
 	
@@ -41,12 +42,14 @@ public class MainActivity extends Activity {
 		
 		// Initialize
 		currentCount = new Count();
+		currentValue = 0;
 		
 		// Restore saved preferences
 		SharedPreferences settings = getSharedPreferences(PREFS_NAME, 0);
 		currentCount.setId(settings.getLong("saved_id", -1));
 		currentCount.setDesc(settings.getString("saved_desc", "new_count"));
 		currentCount.setValue(settings.getInt("saved_value", 0));
+		currentValue = currentCount.getValue();
 		
 		showExtraOptions = settings.getBoolean("settings_extra_options", false);
 		multiTouchAllowed = settings.getBoolean("settings_multitouch_allowed", false);
@@ -82,8 +85,14 @@ public class MainActivity extends Activity {
 			currentCount.setDate(extras.getString("to_load_date"));
 			currentCount.setDesc(extras.getString("to_load_desc"));
 			currentCount.setValue(extras.getInt("to_load_value"));
+			currentValue = currentCount.getValue();
 			setCount();
-			Toast.makeText(this, String.valueOf(currentCount.getValue()), Toast.LENGTH_SHORT).show();
+			Toast.makeText(this, "Loaded " + currentCount.getDesc() + " with value " + String.valueOf(currentCount.getValue()), Toast.LENGTH_SHORT).show();
+			SharedPreferences.Editor editor = settings.edit();
+			editor.putLong("saved_id", currentCount.getId());
+			editor.putString("saved_desc", currentCount.getDesc());
+			editor.putInt("saved_value", currentCount.getValue());
+			editor.commit();
 		}
 		
 	}
@@ -97,6 +106,7 @@ public class MainActivity extends Activity {
 		currentCount.setId(settings.getLong("saved_id", -1));
 		currentCount.setDesc(settings.getString("saved_desc", "new_count"));
 		currentCount.setValue(settings.getInt("saved_value", 0));
+		currentValue = currentCount.getValue();
 		setCount();
 		// Set background color
 		int backgroundColor = settings.getInt("settings_background", R.color.myBackground);
@@ -110,6 +120,7 @@ public class MainActivity extends Activity {
 		// Close db
 		ds.close();
 		// Save preferences
+		currentCount.setValue(currentValue);
 		SharedPreferences settings = getSharedPreferences(PREFS_NAME, 0);
 		SharedPreferences.Editor editor = settings.edit();
 		editor.putLong("saved_id", currentCount.getId());
@@ -123,6 +134,7 @@ public class MainActivity extends Activity {
 	@Override
 	public void onStop() {
 		super.onStop();
+		currentCount.setValue(currentValue);
 		SharedPreferences settings = getSharedPreferences(PREFS_NAME, 0);
 		SharedPreferences.Editor editor = settings.edit();
 		editor.putLong("saved_id", currentCount.getId());
@@ -172,12 +184,12 @@ public class MainActivity extends Activity {
 	
 	public void setCount() {
 		TextView countView = (TextView) findViewById(R.id.countValueId);
-		Integer currentCountVal = currentCount.getValue();
+		Integer currentCountVal = currentValue;
 		countView.setText(currentCountVal.toString());
 	}
 	
 	public void increment(View v) {
-		if (currentCount.getValue() == Integer.MAX_VALUE) {
+		if (currentValue == Integer.MAX_VALUE) {
 			AlertDialog.Builder builder = new AlertDialog.Builder(this);
 			builder	.setTitle("Limit Reached")
 					.setMessage("Sorry, you have reached the upper limit for counting. Please save and restart another count.")
@@ -190,15 +202,13 @@ public class MainActivity extends Activity {
 			AlertDialog dialog = builder.create();
 			dialog.show();
 		} else {
-		int lastVal = currentCount.getValue();
-		lastVal++;
-		currentCount.setValue(lastVal);
-		setCount();
+			currentValue++;
+			setCount();
 		}
 	}
 	
 	public void decrement(View v) {
-		if (currentCount.getValue() == 0) {
+		if (currentValue == 0) {
 			AlertDialog.Builder builder = new AlertDialog.Builder(this);
 			builder	.setTitle("Limit Reached")
 					.setMessage("Sorry, you have reached the lower limit for counting. Please increment instead.")
@@ -211,17 +221,17 @@ public class MainActivity extends Activity {
 			AlertDialog dialog = builder.create();
 			dialog.show();
 		} else {
-			int lastVal = currentCount.getValue();
-			lastVal--;
-			currentCount.setValue(lastVal);
+			currentValue--;
 			setCount();
 		}
 	}
 	
 	public void save(View v) {
+		currentCount.setValue(currentValue);
 	    ds.createCount(currentCount);
 	    // Reset count
 	    currentCount = new Count();
+	    currentValue = 0;
 	    setCount();
 	    // Show toast notification
 	    String s = "Count has been saved to history!";
