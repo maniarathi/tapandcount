@@ -12,6 +12,7 @@ import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.AlertDialog.Builder;
 import android.app.ListActivity;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
@@ -22,6 +23,7 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ArrayAdapter;
@@ -34,6 +36,8 @@ public class HistoryActivity extends ListActivity {
 	private String edittedTitle;
 	private CountDataSource ds;
 	private List<Count> values;
+	private ArrayAdapter<Count> adapter;
+	private ListView listView;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -65,10 +69,10 @@ public class HistoryActivity extends ListActivity {
 				}
 	    	});
 	    }
-	    final ArrayAdapter<Count> adapter = new ArrayAdapter<Count>(this, android.R.layout.simple_list_item_1, values);
+	    adapter = new ArrayAdapter<Count>(this, android.R.layout.simple_list_item_1, values);
 	    setListAdapter(adapter);
 	    
-	    final ListView listView = getListView();
+	    listView = getListView();
 	    listView.setTextFilterEnabled(true);
 	    listView.setOnItemClickListener(new OnItemClickListener() {
 
@@ -84,11 +88,6 @@ public class HistoryActivity extends ListActivity {
 								case 0:
 									// Edit title
 									editTitle(values.get(position));
-									// Get new values
-									values = ds.getAllCounts();
-									listView.setAdapter(adapter);
-									adapter.notifyDataSetChanged();
-									listView.invalidateViews();
 									break;
 								case 1:
 									// Delete count
@@ -174,19 +173,26 @@ public class HistoryActivity extends ListActivity {
 		builder.setPositiveButton("OK", new DialogInterface.OnClickListener() { 
 		    @Override
 		    public void onClick(DialogInterface dialog, int which) {
-		        edittedTitle = input.getText().toString();
+		    	InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE); 
+		    	imm.hideSoftInputFromWindow(input.getWindowToken(),0); 
+		    	edittedTitle = input.getText().toString();
 		        c.setDesc(edittedTitle);
 		        ds.createCount(c);
+		        updateData();
 		    }
 		});
 		builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
 		    @Override
 		    public void onClick(DialogInterface dialog, int which) {
+		    	InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE); 
+		    	imm.hideSoftInputFromWindow(input.getWindowToken(),0); 
 		        dialog.cancel();
 		    }
 		});
 
 		builder.show();
+		InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+		imm.toggleSoftInput(InputMethodManager.SHOW_FORCED,0);
 	}
 	
 	public void deleteCount(Count c) {
@@ -200,5 +206,16 @@ public class HistoryActivity extends ListActivity {
 		i.putExtra("to_load_date", c.getDate());
 		i.putExtra("to_load_value", c.getValue());
 		startActivity(i);
+	}
+	
+	private void updateData() {
+		// Refresh history
+		values.clear();
+		values = ds.getAllCounts();
+		adapter.clear();
+		adapter.addAll(values);
+		listView.setAdapter(adapter);
+		adapter.notifyDataSetChanged();
+		listView.invalidateViews();
 	}
 }

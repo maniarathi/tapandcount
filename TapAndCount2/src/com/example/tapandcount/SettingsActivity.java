@@ -39,7 +39,7 @@ public class SettingsActivity extends Activity {
 		final SharedPreferences settings = getSharedPreferences(PREFS_NAME, 0);
 		
 		// Set listeners for the switches
-		multitouchSwitch = (Switch) findViewById(R.id.switch_multitouch);
+		/*multitouchSwitch = (Switch) findViewById(R.id.switch_multitouch);
 		multitouchSwitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
 			
 			@Override
@@ -48,7 +48,7 @@ public class SettingsActivity extends Activity {
 				editor.putBoolean("settings_multitouch_allowed", isChecked);
 				editor.commit();
 			}
-		});
+		});*/
 		extraoptionsSwitch = (Switch) findViewById(R.id.switch_extrabuttons);
 		extraoptionsSwitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
 			
@@ -61,7 +61,7 @@ public class SettingsActivity extends Activity {
 		});
 		
 		// Set settings
-		multitouchSwitch.setChecked(settings.getBoolean("settings_multitouch_allowed", false));
+		//multitouchSwitch.setChecked(settings.getBoolean("settings_multitouch_allowed", false));
 		extraoptionsSwitch.setChecked(settings.getBoolean("settings_extra_options", false));
 		
 	}
@@ -72,7 +72,7 @@ public class SettingsActivity extends Activity {
 		ds.open();
 		// Set settings
 		final SharedPreferences settings = getSharedPreferences(PREFS_NAME, 0);
-		multitouchSwitch.setChecked(settings.getBoolean("settings_multitouch_allowed", false));
+		//multitouchSwitch.setChecked(settings.getBoolean("settings_multitouch_allowed", false));
 		extraoptionsSwitch.setChecked(settings.getBoolean("settings_extra_options", false));
 		
 		super.onResume();

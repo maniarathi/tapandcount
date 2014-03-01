@@ -42,13 +42,13 @@ public final class R {
         public static final int ic_launcher=0x7f020000;
     }
     public static final class id {
-        public static final int action_about=0x7f0b0018;
-        public static final int action_count=0x7f0b0019;
-        public static final int action_delete=0x7f0b0016;
-        public static final int action_history=0x7f0b001a;
-        public static final int action_load_count=0x7f0b0017;
-        public static final int action_rename=0x7f0b0015;
-        public static final int action_settings=0x7f0b001b;
+        public static final int action_about=0x7f0b0016;
+        public static final int action_count=0x7f0b0017;
+        public static final int action_delete=0x7f0b0014;
+        public static final int action_history=0x7f0b0018;
+        public static final int action_load_count=0x7f0b0015;
+        public static final int action_rename=0x7f0b0013;
+        public static final int action_settings=0x7f0b0019;
         public static final int background1=0x7f0b0006;
         public static final int background2=0x7f0b0007;
         public static final int background3=0x7f0b0008;
@@ -63,13 +63,11 @@ public final class R {
         public static final int countValueId=0x7f0b0001;
         public static final int counting_buttons_layout=0x7f0b0002;
         public static final int counting_layout=0x7f0b0000;
-        public static final int extrabuttons=0x7f0b0013;
-        public static final int multitouch=0x7f0b0011;
+        public static final int extrabuttons=0x7f0b0011;
         public static final int page_buttons=0x7f0b0005;
         public static final int page_buttons_2=0x7f0b0009;
         public static final int page_buttons_3=0x7f0b000d;
-        public static final int switch_extrabuttons=0x7f0b0014;
-        public static final int switch_multitouch=0x7f0b0012;
+        public static final int switch_extrabuttons=0x7f0b0012;
     }
     public static final class integer {
         public static final int count_number=0x7f070000;

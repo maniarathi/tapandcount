@@ -52,7 +52,7 @@ public class MainActivity extends Activity {
 		currentValue = currentCount.getValue();
 		
 		showExtraOptions = settings.getBoolean("settings_extra_options", false);
-		multiTouchAllowed = settings.getBoolean("settings_multitouch_allowed", false);
+		//multiTouchAllowed = settings.getBoolean("settings_multitouch_allowed", false);
 		
 		// Show buttons if set
 		if (showExtraOptions) {
@@ -68,9 +68,9 @@ public class MainActivity extends Activity {
 		}
 		
 		// Enable multitouch
-		if (multiTouchAllowed) {
+		/*if (multiTouchAllowed) {
 			// TODO: Enable multitouch
-		}
+		}*/
 		
 		// Set background color
 		int backgroundColor = settings.getInt("settings_background", R.color.myBackground);
