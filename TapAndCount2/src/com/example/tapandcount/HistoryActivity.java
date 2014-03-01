@@ -1,5 +1,11 @@
 package com.example.tapandcount;
 
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.Date;
 import java.util.List;
 
 import android.app.Activity;
@@ -42,6 +48,22 @@ public class HistoryActivity extends ListActivity {
 	    values = ds.getAllCounts();
 	    if (values.size() == 0) {
 	    	Toast.makeText(this, "History is empty", Toast.LENGTH_SHORT).show();
+	    } else {
+	    	// Sort the values by date
+	    	Collections.sort(values, new Comparator<Count>() {
+				@Override
+				public int compare(Count lhs, Count rhs) {
+					DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
+					try {
+						Date lDate = dateFormat.parse(lhs.getDate());
+						Date rDate = dateFormat.parse(rhs.getDate());
+						return rDate.compareTo(lDate);
+					} catch (ParseException e) {
+						System.out.println("ERROR: Invalid date format when sorting history.\n");
+					}
+					return 0;
+				}
+	    	});
 	    }
 	    final ArrayAdapter<Count> adapter = new ArrayAdapter<Count>(this, android.R.layout.simple_list_item_1, values);
 	    setListAdapter(adapter);
